@@ -8,9 +8,10 @@
 
   --font-display: League_Gothic;
 
-  --shadow-black: '4px 4px 0 oklch(0 0 0)'
-  --shadow-white: '4px 4px 0 oklch(1 0 0)'
-  --drop-shadow-black: '4px 4px 0 oklch(0 0 0)'
+  --shadow-black: 4px 4px 0 oklch(0 0 0);
+  --shadow-white: 4px 4px 0 oklch(1 0 0);
+
+  --columns-auto: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 *{font-family: League_Gothic;}
