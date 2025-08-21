@@ -3,11 +3,11 @@ import { League_Gothic } from "next/font/google";
 import "./globals.css";
 
 const gothic = League_Gothic({
-  subsets: ['latin']
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Porfolio - Fernando Graham",
+  title: "Portfolio - Fernando Graham",
   description: "Fernando Graham's Portfolio Dashboard",
 };
 
@@ -17,10 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${gothic.className} antialiased`}
-      >
+    <html lang="en" className="scroll-smooth">
+      <body className={`${gothic.className} text-2xl antialiased leading-8 overflow-x-hidden`}>
         {children}
       </body>
     </html>
