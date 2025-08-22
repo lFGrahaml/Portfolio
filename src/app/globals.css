@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-lightHover: oklch(0.9765 0.0168 316.94);

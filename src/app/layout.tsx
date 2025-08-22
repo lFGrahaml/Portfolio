@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${gothic.className} text-2xl antialiased leading-8 overflow-x-hidden`}>
+      <body className={`${gothic.className} text-2xl antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
         {children}
       </body>
     </html>
