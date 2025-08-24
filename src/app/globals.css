@@ -8,15 +8,11 @@
   --color-darkHover: oklch(0.2311 0.1212 303.2);
   --color-darkTheme: oklch(0.1395 0.0715 307.42);
 
-  --font-display: League_Gothic;
-
   --shadow-black: 4px 4px 0 oklch(0 0 0);
   --shadow-white: 4px 4px 0 oklch(1 0 0);
 
   --columns-auto: repeat(auto-fit, minmax(200px, 1fr));
 }
-
-*{font-family: League_Gothic;}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

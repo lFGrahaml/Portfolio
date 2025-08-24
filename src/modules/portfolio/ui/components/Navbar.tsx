@@ -1,9 +1,14 @@
 'use client';
 
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
-const Navbar = ({isDarkMode, setIsDarkMode}) => {
+type Props = {
+  isDarkMode: boolean;
+  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
+};
+
+const Navbar = ({isDarkMode, setIsDarkMode} :Props) => {
   const [isScroll, setIsScroll] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,17 +36,17 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
           <Image src={"/assets/logo.png"} alt="Website logo" width={260} height={230} className='rounded-xl w-28 cursor-pointer mr-14' />
         </a>
 
-        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ? '' : 'bg:white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent'}`}>
-          <li><a className='font-display' href="#top">Home</a></li>
-          <li><a className='font-display' href="#about">About Me</a></li>
-          <li><a className='font-display' href="#services">Services</a></li>
-          <li><a className='font-display' href="#work">My Work</a></li>
-          <li><a className='font-display' href="#contact">Contact me</a></li>
+        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full lg:text-xl px-12 py-3 ${isScroll ? '' : 'bg:white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent'} text-[clamp(0.85rem,1vw,1.25rem)]`}>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">My Work</a></li>
+          <li><a href="#contact">Contact me</a></li>
         </ul>
 
         <div className='flex items-center gap-4'>
 
-          <button onClick={() => setIsDarkMode((prev:boolean) => !prev)}>
+          <button onClick={() => setIsDarkMode(prev => !prev)}>
             <Image src={isDarkMode ? "/assets/sun_icon.png" : "/assets/moon_icon.png"} alt='' width={20} height={20} className='w-6 cursor-pointer'/>
           </button>
 

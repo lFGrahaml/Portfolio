@@ -18,7 +18,7 @@ const Header = () => {
         whileInView={{y: 0, opacity: 1}}
         transition={{duration: 0.6, delay: 0.3}}
         className='flex items-end gap-2 text-xl md:text-2xl mb-3'>
-        Hi, I am Fernando Graham
+        Hi, I&apos;m Fernando Graham
         <Image src="/assets/hand-icon.png" alt="hand icon" width={100} height={100} className="w-6"/>
       </motion.h3>
       <motion.h1

@@ -1,13 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import Services from "./components/Services";
-import Work from "./components/Work";
+import About from "@/modules/portfolio/ui/components/About";
+import Contact from "@/modules/portfolio/ui/components/Contact";
+import Footer from "@/modules/portfolio/ui/components/Footer";
+import Header from "@/modules/portfolio/ui/components/Header";
+import Navbar from "@/modules/portfolio/ui/components/Navbar";
+import Services from "@/modules/portfolio/ui/components/Services";
+import Work from "@/modules/portfolio/ui/components/Work";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
