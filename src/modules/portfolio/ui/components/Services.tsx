@@ -1,5 +1,5 @@
 import React from 'react'
-import { serviceData } from '../../../public/assets/assets'
+import { serviceData } from '../../../../../public/assets/assets'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 
@@ -8,13 +8,13 @@ const Services = () => {
     <motion.div
       initial={{opacity: 0}}
       whileInView={{opacity: 1}}
-      transition={{duration: 1}}
+      transition={{duration: 1.5}}
       id="services" className='w-full px-[12%] py-10 scroll-mt-20'
     >
       <motion.h4
         initial={{y: -20, opacity: 0}}
         whileInView={{y: 0, opacity: 1}}
-        transition={{duration: 0.5, delay: 0.3}}
+        transition={{duration: 0.5, delay: 0.7}}
         className='text-center mb-2 text-lg'
       >
         What I specialize in
@@ -22,16 +22,16 @@ const Services = () => {
       <motion.h2
         initial={{y: -20, opacity: 0}}
         whileInView={{y: 0, opacity: 1}}
-        transition={{duration: 0.5, delay: 0.5}}
+        transition={{duration: 0.5, delay: 0.8}}
         className='text-center text-5xl'
       >
         Services
       </motion.h2>
 
       <motion.div
-        initial={{opacity: 0}}
+        initial={{opacity: -1}}
         whileInView={{opacity: 1}}
-        transition={{duration: 0.6, delay: 0.9}}
+        transition={{duration: 0.6, delay: 1.1}}
         className='grid grid-cols-[var(--columns-auto)] gap-6 my-10'
       >
           {serviceData.map(({icon, title, description, link}, index) => (

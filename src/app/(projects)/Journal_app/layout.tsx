@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { League_Gothic } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
+const gothic = League_Gothic({
   subsets: ['latin'],
-  weight: ['400']
 });
 
 export const metadata: Metadata = {
@@ -19,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${poppins.className} text-2xl antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
+      <body className={`${gothic.className} text-2xl antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
         {children}
       </body>
     </html>

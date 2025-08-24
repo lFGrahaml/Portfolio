@@ -1,9 +1,13 @@
 import React from 'react'
-import { workData } from '../../../public/assets/assets'
+import { workData } from '../../../../../public/assets/assets'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 
-const Work = ({isDarkMode}) => {
+type Props = {
+  isDarkMode: boolean;
+};
+
+const Work = ({isDarkMode}: Props) => {
   return (
     <motion.div
       initial={{opacity: 0}}

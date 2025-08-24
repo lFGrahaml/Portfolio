@@ -1,9 +1,13 @@
 import Image from 'next/image'
 import React from 'react'
-import { infoList, toolsData } from '../../../public/assets/assets'
+import { infoList, toolsData } from '../../../../../public/assets/assets'
 import { motion } from 'motion/react'
 
-const About = ({isDarkMode}) => {
+type Props = {
+  isDarkMode: boolean;
+};
+
+const About = ({isDarkMode}: Props) => {
   return (
     <motion.div
       initial={{opacity: 0}}
@@ -48,7 +52,7 @@ const About = ({isDarkMode}) => {
           transition={{duration: 0.6, delay: 0.8}}
           className='flex-1'
         >
-          <p className='mb-10 max-w-2xl'>I am a recent graduate out of Arizona State University for software engineering, where I have had the opportunity to work on hands on projects that have had real world impact and showcase technical depth.</p>
+          <p className='mb-10 max-w-2xl'>I&apos;m a recent graduate out of Arizona State University for software engineering, where I&apos;ve had the opportunity to work on hands on projects that have had real world impact and showcase technical depth.</p>
           <motion.ul
             initial={{opacity: 0}}
             whileInView={{opacity: 1}}
@@ -62,8 +66,8 @@ const About = ({isDarkMode}) => {
                 key={index}
               >
                   <Image src={isDarkMode ? iconDark : icon} alt={title} width={350} height={300} className='w-7 mt-3'/>
-                  <h3 className='my-4 font-semibold text-gray-700 dark:text-white'>{title}</h3>
-                  <p className='text-gray-600 text-sm dark:text-white/80'>{description}</p>
+                  <h3 className='my-4 font-semibold text-gray-700 dark:text-white sm:text-sm'>{title}</h3>
+                  <p className='text-gray-600 text-sm dark:text-white/80 lg:text-xs'>{description}</p>
               </motion.li>
             ))}
           </motion.ul>
@@ -71,7 +75,7 @@ const About = ({isDarkMode}) => {
           <motion.h4
             initial={{y: 20, opacity: 0}}
             whileInView={{y: 0, opacity: 1}}
-            transition={{duration: 0.5, delay: 1.1}}
+            transition={{duration: 0.5, delay: 0.9}}
             className='my-6 text-gray-700 dark:text-white/80'
           >
             Tools in frequent use

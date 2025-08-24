@@ -4,12 +4,16 @@ import { motion } from 'motion/react';
 
 const Contact = () => {
   const [result, setResult] = useState<string>("");
+  const [isError, setIsError] = useState<boolean>(false);
 
-  const onSubmit = async (event) => {
+
+
+  const onSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Sending....");
-    const formData = new FormData(event.target);
 
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     formData.append("access_key", "4c3429d2-c871-4f57-b8fd-b6a8e518b6cd");
 
     const response = await fetch("https://api.web3forms.com/submit", {
@@ -20,10 +24,12 @@ const Contact = () => {
     const data = await response.json();
 
     if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
+      setResult("Message sent!");
+      setIsError(true);
+      form.reset();
     } else {
       console.log("Error", data);
+      setIsError(false);
       setResult(data.message);
     }
   };
@@ -33,7 +39,7 @@ const Contact = () => {
       initial={{opacity: 0}}
       whileInView={{opacity: 1}}
       transition={{duration: 1}}
-      id="contact" className='w-full px-[12%] py-10 scroll-mt-20 bg-[url("/assets/footer-bg-color.png")] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none'
+      id="contact" className='w-full px-[12%] py-10 scroll-mt-20 bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none'
     >
       <motion.h4
         initial={{y: -20, opacity: 0}}
@@ -103,7 +109,14 @@ const Contact = () => {
           <Image src='/assets/right-arrow-white.png' alt='right arrow' width={8} height={8} className='w-4'/>
         </motion.button>
 
-        <p className='margin-top'>{result}</p>
+        <motion.p
+          initial={{opacity: 0}}
+          whileInView={{opacity: 1}}
+          transition={{duration: 0.5, delay: 0.9}}
+          className={`text-lg margin-top  py-5 ${isError ? 'text-green-600' : 'text-red-600'}`}
+        >
+          {result}
+        </motion.p>
       </motion.form>
     </motion.div>
   )
