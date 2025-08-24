@@ -222,7 +222,7 @@ const SignUpView = () => {
                   </div>
 
                   <div className="text-center text-sm cursor-pointer">
-                    Already have an account?  <Link href='sign-in' className="underline underline-offset-2">Sign in</Link>
+                    Already have an account?  <Link href='/sign-in' className="underline underline-offset-2">Sign in</Link>
                   </div>
                 </div>
               </form>

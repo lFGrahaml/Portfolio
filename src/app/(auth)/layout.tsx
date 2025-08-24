@@ -4,7 +4,7 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div className={`grid grid-col-1 lg:grid-cols-5`}>
+    <div className={`grid grid-cols-1 lg:grid-cols-5`}>
       <div className="bg-[#f4f4f0] h-screen w-full lg:col-span-3 overflow-y-auto">
         {children}
       </div>
