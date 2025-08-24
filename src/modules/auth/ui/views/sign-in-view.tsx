@@ -164,7 +164,7 @@ const SignInView = () => {
                   </div>
 
                   <div className="text-center text-sm cursor-pointer">
-                    Don&apos;t have an account? <Link href='sign-up' className="underline underline-offset-2">Sign up</Link>
+                    Don&apos;t have an account? <Link href='/sign-up' className="underline underline-offset-2">Sign up</Link>
                   </div>
                 </div>
               </form>

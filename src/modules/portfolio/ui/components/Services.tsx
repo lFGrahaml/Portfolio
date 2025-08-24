@@ -29,7 +29,7 @@ const Services = () => {
       </motion.h2>
 
       <motion.div
-        initial={{opacity: -1}}
+        initial={{opacity: 0}}
         whileInView={{opacity: 1}}
         transition={{duration: 0.6, delay: 1.1}}
         className='grid grid-cols-[var(--columns-auto)] gap-6 my-10'

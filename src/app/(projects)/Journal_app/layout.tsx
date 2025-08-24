@@ -1,26 +1,13 @@
-import type { Metadata } from "next";
-import { League_Gothic } from "next/font/google";
-import "./globals.css";
-
-const gothic = League_Gothic({
-  subsets: ['latin'],
-});
-
-export const metadata: Metadata = {
-  title: "Portfolio - Fernando Graham",
-  description: "Fernando Graham's Portfolio Dashboard",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface Props {
   children: React.ReactNode;
-}>) {
+}
+
+const Layout = ({ children }: Props) => {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${gothic.className} text-2xl antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
-        {children}
-      </body>
-    </html>
+    <div className={`grid grid-cols-1 lg:grid-cols-5`}>
+      {children}
+    </div>
   );
 }
+
+export default Layout

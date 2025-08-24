@@ -36,7 +36,7 @@ const Navbar = ({isDarkMode, setIsDarkMode} :Props) => {
           <Image src={"/assets/logo.png"} alt="Website logo" width={260} height={230} className='rounded-xl w-28 cursor-pointer mr-14' />
         </a>
 
-        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full lg:text-xl px-12 py-3 ${isScroll ? '' : 'bg:white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent'} text-[clamp(0.85rem,1vw,1.25rem)]`}>
+        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full lg:text-xl px-12 py-3 ${isScroll ? '' : 'bgwhite shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent'} text-[clamp(0.85rem,1vw,1.25rem)]`}>
           <li><a href="#top">Home</a></li>
           <li><a href="#about">About Me</a></li>
           <li><a href="#services">Services</a></li>
