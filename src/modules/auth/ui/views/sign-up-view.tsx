@@ -6,7 +6,9 @@ import { OctagonAlertIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 import { authClient } from "@/lib/auth-client";
 import { Input } from "@/components/ui/input";
@@ -44,7 +46,28 @@ const SignUpView = () => {
       {
         onSuccess: () => {
           setIsLoading(false);
-          router.push("/"); // TODO: change this to Commi Journal Home Page
+          router.push("/commi-journal"); // TODO: change this to Commi Journal Home Page
+        },
+        onError: ({ error }) => {
+          setIsLoading(false);
+          setIsError(error.message);
+        }
+      }
+    );
+  }
+
+  const onSocial = (provider: 'github' | 'apple' | 'google') => {
+    setIsError(null);
+    setIsLoading(true);
+
+    authClient.signIn.social(
+      {
+        provider: provider,
+        callbackURL: '/commi-journal' // TODO: change this to Commi Journal Home Page
+      },
+      {
+        onSuccess: () => {
+          setIsLoading(false);
         },
         onError: ({ error }) => {
           setIsLoading(false);
@@ -69,6 +92,7 @@ const SignUpView = () => {
       <div className='flex w-full items-center justify-center'>
         <Card className='overflow-auto p-8 w-[60%] max-w-xl sm:overflow-hidden'>
           <CardContent className='grid p-0'>
+            <Link href="/#work"><Image src='/assets/left-arrow.png' alt="back arrow" width={25} height={25}/></Link>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="p-6 md:p-8">
                 <div className="flex flex-col gap-6">
@@ -206,19 +230,32 @@ const SignUpView = () => {
 
                   <div className="grid grid-cols-2 gap-4">
                     <Button
+                      onClick={() => onSocial('google') }
                       variant='outline'
                       type="button"
-                      className="w-full  cursor-pointer"
+                      className="w-full cursor-pointer"
                     >
-                      Google
+                      <FaGoogle />
                     </Button>
+
                     <Button
+                      onClick={() => onSocial('github') }
                       variant='outline'
                       type="button"
-                      className="w-full  cursor-pointer"
+                      className="w-full cursor-pointer"
+                    >
+                      <FaGithub />
+                    </Button>
+                    {/*
+                    ! Apple Sign In Requires Developer Account ($100)
+                    <Button
+                      onClick={() => onSocial('apple') }
+                      variant='outline'
+                      type="button"
+                      className="w-full cursor-pointer"
                     >
                       Apple
-                    </Button>
+                    </Button> */}
                   </div>
 
                   <div className="text-center text-sm cursor-pointer">
