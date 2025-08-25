@@ -1,14 +1,11 @@
 'use client';
 
 import Image from 'next/image'
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useDarkMode } from '../controller/DarkModeProvider';
 
-type Props = {
-  isDarkMode: boolean;
-  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
-};
-
-const Navbar = ({isDarkMode, setIsDarkMode} :Props) => {
+const Navbar = () => {
+  const {isDarkMode, setIsDarkMode} = useDarkMode();
   const [isScroll, setIsScroll] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,7 +43,7 @@ const Navbar = ({isDarkMode, setIsDarkMode} :Props) => {
 
         <div className='flex items-center gap-4'>
 
-          <button onClick={() => setIsDarkMode(prev => !prev)}>
+          <button onClick={() => setIsDarkMode(!isDarkMode)}>
             <Image src={isDarkMode ? "/assets/sun_icon.png" : "/assets/moon_icon.png"} alt='' width={20} height={20} className='w-6 cursor-pointer'/>
           </button>
 

@@ -1,13 +1,15 @@
-import React from 'react'
-import { workData } from '../../../../../public/assets/assets'
+'use client';
+
 import Image from 'next/image'
 import { motion } from 'motion/react'
+import Link from 'next/link';
 
-type Props = {
-  isDarkMode: boolean;
-};
+import { workData } from '../../../../../../public/assets/assets'
+import { useDarkMode } from '../controller/DarkModeProvider';
 
-const Work = ({isDarkMode}: Props) => {
+const Work = () => {
+  const { isDarkMode } = useDarkMode();
+
   return (
     <motion.div
       initial={{opacity: 0}}
@@ -52,26 +54,27 @@ const Work = ({isDarkMode}: Props) => {
             whileHover={{scale: 1.05}}
             transition={{duration: 0.3}}
             key={index}
-            className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group'
+            className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative group'
             style={{backgroundImage: `url(${project.bgImage})`}}
           >
-            <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-4 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 gap-1">
-              <div className="flex-1 min-w-0">
-                <h2 className="font-semibold ">{project.title}</h2>
-                <p className="text-sm text-gray-700 ">{project.description}</p>
-              </div>
+            <Link href={'/sign-up'}> {/* TODO: Change to Commit Journal Home Page */}
+              <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-4 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 gap-1">
+                <div className="flex-1 min-w-0">
+                  <h2 className="font-semibold ">{project.title}</h2>
+                  <p className="text-sm text-gray-700 ">{project.description}</p>
+                </div>
 
-              <div className="flex-shrink-0 border rounded-full border-black w-8 h-8 flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                <Image
-                  src="/assets/send-icon.png"
-                  alt="send icon"
-                  width={20}
-                  height={20}
-                  className="w-5 h-5 object-contain"
-                />
+                <div className="flex-shrink-0 border rounded-full border-black w-8 h-8 flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
+                    <Image
+                      src="/assets/send-icon.png"
+                      alt="send icon"
+                      width={20}
+                      height={20}
+                      className="w-5 h-5 object-contain"
+                    />
+                </div>
               </div>
-            </div>
-
+            </Link>
           </motion.div>
         ))}
       </motion.div>

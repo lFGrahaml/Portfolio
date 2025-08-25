@@ -1,7 +1,9 @@
-import React from 'react'
-import { serviceData } from '../../../../../public/assets/assets'
+'use client';
+
 import Image from 'next/image'
 import { motion } from 'motion/react'
+
+import { serviceData } from '../../../../../../public/assets/assets'
 
 const Services = () => {
   return (

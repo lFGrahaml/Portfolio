@@ -6,7 +6,9 @@ import { OctagonAlertIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaGoogle, FaGithub } from 'react-icons/fa'
 import Link from "next/link";
+import Image from "next/image";
 
 import { authClient } from "@/lib/auth-client";
 import { Input } from "@/components/ui/input";
@@ -38,7 +40,28 @@ const SignInView = () => {
       {
         onSuccess: () => {
           setIsLoading(false);
-          router.push("/"); // TODO: change this to Commi Journal Home Page
+          router.push("/commi-journal");
+        },
+        onError: ({ error }) => {
+          setIsLoading(false);
+          setIsError(error.message);
+        }
+      }
+    );
+  }
+
+  const onSocial = (provider: 'github' | 'apple' | 'google') => {
+    setIsError(null);
+    setIsLoading(true);
+
+    authClient.signIn.social(
+      {
+        provider: provider,
+        callbackURL: '/commi-journal'
+      },
+      {
+        onSuccess: () => {
+          setIsLoading(false);
         },
         onError: ({ error }) => {
           setIsLoading(false);
@@ -61,6 +84,7 @@ const SignInView = () => {
       <div className='flex w-full items-center justify-center'>
         <Card className='overflow-auto p-8 w-[60%] max-w-xl sm:overflow-hidden'>
           <CardContent className='grid p-0'>
+            <Link href="/#work"><Image src='/assets/left-arrow.png' alt="back arrow" width={25} height={25}/></Link>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="p-6 md:p-8">
                 <div className="flex flex-col gap-6">
@@ -73,7 +97,7 @@ const SignInView = () => {
                       Login to your account
                     </p>
                   </div>
-
+                  {/* Email Field */}
                   <div className="grid gap-3">
                       <FormField
                         control={form.control}
@@ -98,6 +122,7 @@ const SignInView = () => {
                       </FormField>
                   </div>
 
+                  {/* Password Field */}
                   <div className="grid gap-3">
                       <FormField
                         control={form.control}
@@ -121,6 +146,7 @@ const SignInView = () => {
                       </FormField>
                   </div>
 
+                  {/* Error Field */}
                   {!!isError && (
                     <Alert className="bg-destructive/10 border-none">
                       <OctagonAlertIcon className="h-4 w-4 !text-destructive" />
@@ -140,6 +166,7 @@ const SignInView = () => {
                     Sign in
                   </Button>
 
+                  {/* Line Border */}
                   <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                   <span className="text-muted-foreground bg-card relative px-2 z-10">
                     or continue with
@@ -148,21 +175,36 @@ const SignInView = () => {
 
                   <div className="grid grid-cols-2 gap-4">
                     <Button
+                      onClick={() => onSocial('google') }
                       variant='outline'
                       type="button"
-                      className="w-full  cursor-pointer"
+                      className="w-full cursor-pointer"
                     >
-                      Google
+                      <FaGoogle />
                     </Button>
+
                     <Button
+                      onClick={() => onSocial('github') }
                       variant='outline'
                       type="button"
-                      className="w-full  cursor-pointer"
+                      className="w-full cursor-pointer"
                     >
-                      Apple
+                      <FaGithub />
                     </Button>
+
+                    {/*
+                    ! Apple Sign In Requires Developer Account ($100)
+                    <Button
+                      onClick={() => onSocial('apple') }
+                      variant='outline'
+                      type="button"
+                      className="w-full cursor-pointer"
+                    >
+                      <FaApple />
+                    </Button> */}
                   </div>
 
+                  {/* Router Field */}
                   <div className="text-center text-sm cursor-pointer">
                     Don&apos;t have an account? <Link href='/sign-up' className="underline underline-offset-2">Sign up</Link>
                   </div>
@@ -172,7 +214,7 @@ const SignInView = () => {
           </CardContent>
         </Card>
       </div>
-
+      {/* Terms Field */}
       <div className="py-2 text-xs text-center text-balance text-muted-foreground *:[a]:underline *:[a]:underline-offset-2 *:[a]:hover:text-primary">
         By continuing, you agree to our <a href="#" >Terms of Service</a> and <a href="#">Privacy Policy</a>
       </div>

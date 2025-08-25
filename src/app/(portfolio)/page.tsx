@@ -1,44 +1,22 @@
-"use client"
-
-import { useEffect, useState } from "react";
-import About from "@/modules/portfolio/ui/components/About";
-import Contact from "@/modules/portfolio/ui/components/Contact";
-import Footer from "@/modules/portfolio/ui/components/Footer";
-import Header from "@/modules/portfolio/ui/components/Header";
-import Navbar from "@/modules/portfolio/ui/components/Navbar";
-import Services from "@/modules/portfolio/ui/components/Services";
-import Work from "@/modules/portfolio/ui/components/Work";
+import About from "@/modules/portfolio/ui/components/views/About";
+import Contact from "@/modules/portfolio/ui/components/views/Contact";
+import Footer from "@/modules/portfolio/ui/components/views/Footer";
+import Header from "@/modules/portfolio/ui/components/views/Header";
+import Navbar from "@/modules/portfolio/ui/components/views/Navbar";
+import Services from "@/modules/portfolio/ui/components/views/Services";
+import Work from "@/modules/portfolio/ui/components/views/Work";
+import DarkModeProvider from "@/modules/portfolio/ui/components/controller/DarkModeProvider";
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false);
-    }
-  }, [])
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = '';
-    }
-  }, [isDarkMode])
-
   return (
-    <>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
+    <DarkModeProvider>
+      <Navbar />
       <Header />
-      <About isDarkMode={isDarkMode} />
+      <About />
       <Services />
-      <Work isDarkMode={isDarkMode} />
+      <Work />
       <Contact />
       <Footer />
-    </>
+    </DarkModeProvider>
   );
 }

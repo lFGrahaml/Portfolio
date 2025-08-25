@@ -1,13 +1,14 @@
+'use client';
+
 import Image from 'next/image'
-import React from 'react'
-import { infoList, toolsData } from '../../../../../public/assets/assets'
 import { motion } from 'motion/react'
 
-type Props = {
-  isDarkMode: boolean;
-};
+import { infoList, toolsData } from '../../../../../../public/assets/assets'
+import { useDarkMode } from '../controller/DarkModeProvider';
 
-const About = ({isDarkMode}: Props) => {
+const About = () => {
+  const { isDarkMode } = useDarkMode();
+
   return (
     <motion.div
       initial={{opacity: 0}}
