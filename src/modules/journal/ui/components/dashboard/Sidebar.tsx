@@ -17,7 +17,7 @@ import { BookIcon, FileIcon, PlusCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import DashboardProfileButton from "./dashboard-profile-button";
+import DashboardProfileButton from "./Profile-button";
 
 const firstGroup = [
   {

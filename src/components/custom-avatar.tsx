@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from "@/lib/utils";
 import { botttsNeutral, initials } from "@dicebear/collection"
 import { createAvatar } from "@dicebear/core";
